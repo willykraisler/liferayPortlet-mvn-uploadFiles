@@ -9,6 +9,7 @@
 		<header-portlet-css>/css/jquery.dataTables.min.css</header-portlet-css>	
 		<footer-portlet-javascript>/js/jquery-1.12.0.min.js</footer-portlet-javascript>
 		<footer-portlet-javascript>/js/jquery.dataTables.min.js</footer-portlet-javascript>
+		<footer-portlet-javascript>/js/bootstrap.min.js</footer-portlet-javascript>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 	</portlet>
 	<role-mapper>

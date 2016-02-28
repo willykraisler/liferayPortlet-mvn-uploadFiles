@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "BOGOTAROW")
 @NamedQueries({ 
 	@NamedQuery(name = "@ROWS_BOGOTA", 
-            query = "FROM BogotaRow as br WHERE br.saveDate BETWEEN :stDate AND :edDate ") })
+            query = "FROM BogotaRow as br WHERE br.saveDate BETWEEN :stDate AND :edDate") })
 public class BogotaRow implements Serializable {
 
 	private static final long serialVersionUID = 1L;

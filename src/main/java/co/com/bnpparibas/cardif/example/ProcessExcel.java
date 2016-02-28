@@ -1,5 +1,7 @@
 package co.com.bnpparibas.cardif.example;
 
+
+import co.com.bnpparibas.cardif.exception.ReaderException;
 import co.com.bnpparibas.cardif.model.BogotaRow;
 import co.com.bnpparibas.cardif.model.SessionBuilder;
 import co.com.bnpparibas.cardif.reader.ReaderFile;
@@ -8,12 +10,14 @@ import co.com.bnpparibas.cardif.utils.UtilDate;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 
 /**
@@ -21,20 +25,17 @@ import org.hibernate.SessionFactory;
  */
 public class ProcessExcel {	
 	
-	public void loadExcel(Integer rejects) {
+	final static Logger logger = LoggerFactory.getLogger(ProcessExcel.class);
+	
+	public void loadExcel(Integer rejects) throws IOException{
 
 		SessionFactory sessionFactory = SessionBuilder.createSessionFactory();		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();		
-		List<BogotaRow> rows =  new ArrayList<BogotaRow>();		
-		try {
-			ReaderFile.readXLSXFile(rows,rejects);
-		} catch (IOException e) {			
-			e.printStackTrace();
-		} 		
+		List<BogotaRow> rows =  new ArrayList<BogotaRow>();
+		ReaderFile.readXLSXFile(rows,rejects);		
 		for (BogotaRow r : rows){
-			session.save(r);
-			
+			session.save(r);			
 		}		
 		session.getTransaction().commit();		
 		session.close();

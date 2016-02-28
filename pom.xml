@@ -140,24 +140,49 @@
 			<version>${jodatime.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback-classic.version}</version>
+		</dependency>
+
 
 	</dependencies>
 	<profiles>
+		<!-- <profile> -->
+		<!-- <id>Liferay6.2ga</id> -->
+		<!-- <properties> -->
+		<!-- <liferay.version>6.2.0-ga1</liferay.version> -->
+		<!-- <liferay.maven.plugin.version>6.2.0-ga1</liferay.maven.plugin.version> -->
+		<!-- <liferay.auto.deploy.dir>/home/andrew/Desktop/liferay-developer-studio/liferay-portal-6.2-ee-sp11/deploy</liferay.auto.deploy.dir> -->
+		<!-- <liferay.app.server.deploy.dir>/home/andrew/Desktop/liferay-developer-studio/liferay-portal-6.2-ee-sp11/tomcat-7.0.42/webapps</liferay.app.server.deploy.dir> -->
+		<!-- <liferay.app.server.lib.global.dir>/home/andrew/Desktop/liferay-developer-studio/liferay-portal-6.2-ee-sp11/tomcat-7.0.42/lib/ext</liferay.app.server.lib.global.dir> -->
+		<!-- <liferay.app.server.portal.dir>/home/andrew/Desktop/liferay-developer-studio/liferay-portal-6.2-ee-sp11/tomcat-7.0.42/webapps/ROOT</liferay.app.server.portal.dir> -->
+		<!-- <hibernate.version>4.2.15.Final</hibernate.version> -->
+		<!-- <postgresql.version>9.3-1102-jdbc41</postgresql.version> -->
+		<!-- <poi.version>3.12</poi.version> -->
+		<!-- <commons-apache.version>1.3.2</commons-apache.version> -->
+		<!-- <junit.version>3.8.1</junit.version> -->
+		<!-- <jodatime.version>2.9.2</jodatime.version> -->
+		<!-- </properties> -->
+		<!-- </profile> -->
+
 		<profile>
-			<id>Liferay6.2ga</id>
+			<id>LIFERAY6.2n</id>
 			<properties>
 				<liferay.version>6.2.0-ga1</liferay.version>
 				<liferay.maven.plugin.version>6.2.0-ga1</liferay.maven.plugin.version>
-				<liferay.auto.deploy.dir>/home/andrew/Desktop/liferay-developer-studio/liferay-portal-6.2-ee-sp11/deploy</liferay.auto.deploy.dir>
-				<liferay.app.server.deploy.dir>/home/andrew/Desktop/liferay-developer-studio/liferay-portal-6.2-ee-sp11/tomcat-7.0.42/webapps</liferay.app.server.deploy.dir>
-				<liferay.app.server.lib.global.dir>/home/andrew/Desktop/liferay-developer-studio/liferay-portal-6.2-ee-sp11/tomcat-7.0.42/lib/ext</liferay.app.server.lib.global.dir>
-				<liferay.app.server.portal.dir>/home/andrew/Desktop/liferay-developer-studio/liferay-portal-6.2-ee-sp11/tomcat-7.0.42/webapps/ROOT</liferay.app.server.portal.dir>
+				<liferay.auto.deploy.dir>/home/andrew/Downloads/liferay-developer-studio/liferay-portal-6.2-ee-sp11/deploy</liferay.auto.deploy.dir>
+				<liferay.app.server.deploy.dir>/home/andrew/Downloads/liferay-developer-studio/liferay-portal-6.2-ee-sp11/tomcat-7.0.42/webapps</liferay.app.server.deploy.dir>
+				<liferay.app.server.lib.global.dir>/home/andrew/Downloads/liferay-developer-studio/liferay-portal-6.2-ee-sp11/tomcat-7.0.42/lib/ext</liferay.app.server.lib.global.dir>
+				<liferay.app.server.portal.dir>/home/andrew/Downloads/liferay-developer-studio/liferay-portal-6.2-ee-sp11/tomcat-7.0.42/webapps/ROOT</liferay.app.server.portal.dir>
 				<hibernate.version>4.2.15.Final</hibernate.version>
 				<postgresql.version>9.3-1102-jdbc41</postgresql.version>
 				<poi.version>3.12</poi.version>
 				<commons-apache.version>1.3.2</commons-apache.version>
 				<junit.version>3.8.1</junit.version>
 				<jodatime.version>2.9.2</jodatime.version>
+				<logback-classic.version>1.1.5</logback-classic.version>
 			</properties>
 		</profile>
 	</profiles>

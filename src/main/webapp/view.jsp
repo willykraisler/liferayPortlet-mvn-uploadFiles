@@ -4,38 +4,39 @@
 <portlet:defineObjects />
 <portlet:actionURL name="upload" var="uploadFileURL"></portlet:actionURL>
 <portlet:resourceURL var="actionUrl" />
-
-
-<img src="<%=request.getContextPath()%>/images/logoFondoBlanco.jpg"
-	id="bogotaImg">
+<img src="<%=request.getContextPath()%>/images/logoFondoBlanco.jpg" id="bogotaImg">
+<br>
 <div id="principal">
-	<aui:form action="<%=uploadFileURL%>" enctype="multipart/form-data"
-		method="post">
-		<div class="form-group">
-			<label for="usr">Seleccione la base de este mes:</label> <br>
-			<aui:input type="file" name="fileupload" />
-		</div>
-		<aui:button name="Save" value="Save" type="submit" />
-	</aui:form>
 
 	<div id="myAlert"></div>
-	
 	<table id="dynamicTable" class="display"></table>
-	
+	<div id="header-bog">
+		<aui:form action="<%=uploadFileURL%>" enctype="multipart/form-data"
+			method="post">
+			<div class="form-group">
+				<label for="usr">Seleccione la base de este mes:</label> <br>
+				<aui:input type="file" name="fileupload" />
+			</div>
+			<aui:button name="Save" value="Save" type="submit" />
+		</aui:form>
+	</div>
 
-	<aui:script use="io,aui-base,aui-io-request">
+	<aui:script use="io,aui-base,aui-io-request,aui-alert">
+		$("#header-bog").hide();
+		
 		var A = AUI();	
-		A.on('domready', function(event) {
+		A.on('domready', function(event) {								
 			// aui ajax call	
 			A.io.request('${actionUrl}', {
 				dataType : 'json',
 				method : 'GET',
 				on : {
-					success : function() {
-						var data = this.get('responseData');
-						if (data.length > 0) {
+					success : function() {					
+						var data = this.get('responseData');					
+						var dataStore = data.table;						
+						if (dataStore.length > 0) {							
 							$('#dynamicTable').DataTable({
-								data : data,
+								data : dataStore,
 								columns : [ {
 									title : "Certificado"
 								}, {
@@ -50,36 +51,20 @@
 									title : "Cedula"
 								} ]
 							});
-						}else {
-				
- 						}
+						}else{
+							$("#myAlert").append("<div class='alert alert-warning fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Warning!</strong> No se encontraron registros en la base de datos.</div>");
+						}
+						
+						if (data.isAdmin)
+						 	$("#header-bog").show();
+						
 					},
 					failure : function() {
-				
-												
-
+						$("#myAlert").append(" <div class='alert alert-danger fade in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Error!</strong> Error al tratar de cargar datos - Comuniquese con Cardif soporte.</div>");
 					}
-
 				}
 			});
 		});
-		
-// 		YUI().use(
-// 				  'aui-alert',
-// 				  function(Y) {
-// 				    new Y.Alert(
-// 				      {
-// 				        boundingBox: '#myAlert',
-// 				        bodyContent: 'This is an alert',
-// 				        closeable: true,
-// 				        cssClass: 'alert-info',
-// 				        render: true
-// 				      }
-// 				    );
-// 				  }
-// 				);
-		
-		
 	</aui:script>
 </div>
 
